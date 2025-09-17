@@ -1,42 +1,307 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+html,
+body,
+main {
+  width: 100%;
+  height: 100%;
+}
 #root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+font-family: Arial, Helvetica, sans-serif;
+  /* display: flex;
+  align-items: center;
+  justify-content: center; */
+}
+.blueline{
+  width: 100%;
+  height: 3vh;
+  background-color: #3D61BB;
+}
+
+.hearder{
+  width: 100%;
+  height: 5vh;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+
+ }
+
+.logo{
+width: 3%;
+}
+
+.heroSection{
+display: flex;
+ /* flex-direction: row; */
+
+  width: 100%;
+  height: 50vh;
+  padding: 10px;
+
+}
+
+.heropic{
+  width: 100%;
+  height: 100%;
+  padding: 10px;
+}
+
+.herotext{
+  width: 50%;
+  height: 100%;
+  padding: 20px;
+}
+
+.btn{
+ align-items: center;
+ justify-content: center;
+ display: flex;
+ padding: 2%;
+}
+
+.button{
+  width: 15%;
+  color: aliceblue;
+  background-color: #3D61BB;
+  height: 45PX;
+ border: none;
+ outline: none;
+ border-radius: 10PX;
+}
+
+.link-a{
+  color: white;
+  text-decoration: none;
+  font-size: x-large;
+}
+
+.Pic404{
+display: flex;
+flex-direction: column;
+align-items: center;
+width: 100%;
+height: 100vh
+}
+
+.login-section{
+  display: flex;
+  flex-direction: row;
+  background-color: #3D61BB;
+  width: 100%;
+  height: 100vh;
+}
+
+.register-section{
+  display: flex;
+  justify-content: center;
+  background-color: #3D61BB;
+  width: 100%;
+ height: 100vh;
+}
+
+.card{
+  border: 2px solid white;
+  width: 50%;
+  height: 60vh;
+  margin-top: 10%;
+  margin-left: 11%;
+  border-radius: 30px;
+  background-color: lightgray;
+ 
+
+}
+
+.form{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 80%;
+  margin-left: 10%;
+  margin-top: 8%;
+}
+
+label {
+  display: block;        /* puts label on its own line */
+  text-align: left;      /* forces text to start on the left */
+  width: 80%;            /* matches your input width */
+  font-weight: bold;
+  margin-bottom: 0.3rem;
+}
+
+#username{
+justify-content: flex-start;
+}
+
+#passwords{
+
+}
+
+input{
+width: 80%;
+padding: 20px;
+
+
+}
+
+.text-section{
+  width: 50%;
   text-align: center;
+  margin-top: 19%;
+  color: white;
+  gap: 2%;
 }
 
+.login-btn{
+width: 80%;
+padding: 20px;
+color: black;
+}
+
+.loginBtn{
+  width: 20%;
+  color: aliceblue;
+  background-color: lightgrey;
+  height: 47PX;
+ border: none;
+ outline: none;
+ border-radius: 10PX;
+ 
+}
+
+.link-login{
+  color: black;
+  text-decoration: none;
+  font-size: x-large;
+}
+
+.homepage {
+  min-height: 100vh;
+  background-color: #f3f4f6;
+  font-family: Arial, sans-serif;
+}
+/* Navbar */
+.navbar {
+  background: #fff;
+  padding: 16px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
 .logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
+  font-size: 20px;
+  font-weight: bold;
+  color: #2563eb; /* blue */
 }
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
+.nav-buttons {
+  display: flex;
+  gap: 12px;
 }
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+/* Buttons */
+.btn {
+  padding: 8px 16px;
+  border-radius: 8px;
+  color: #fff;
+  font-size: 14px;
+  border: none;
+  cursor: pointer;
+  transition: 0.3s;
 }
-
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.btn-blue {
+  background-color: #3b82f6;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.btn-blue:hover {
+  background-color: #2563eb;
 }
-
-.card {
-  padding: 2em;
+.btn-green {
+  background-color: #10b981;
 }
-
-.read-the-docs {
-  color: #888;
+.btn-green:hover {
+  background-color: #059669;
+}
+.btn-red {
+  background-color: #ef4444;
+}
+.btn-red:hover {
+  background-color: #dc2626;
+}
+/* Filters */
+.filters {
+  background: #fff;
+  margin: 20px;
+  padding: 16px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+  border-radius: 8px;
+}
+.search-input,
+.select {
+  padding: 8px 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  flex: 1;
+  min-width: 200px;
+}
+/* Job List */
+.job-list {
+  padding: 20px;
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+}
+.job-card {
+  background: #fff;
+  padding: 16px;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  transition: 0.3s;
+}
+.job-card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+}
+.job-company {
+  font-size: 18px;
+  font-weight: bold;
+}
+.job-role {
+  color: #4b5563;
+  margin-top: 4px;
+}
+.status {
+  display: inline-block;
+  margin-top: 8px;
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: bold;
+}
+.status-applied {
+  background-color: #fef3c7;
+  color: #b45309;
+}
+.status-interviewed {
+  background-color: #d1fae5;
+  color: #065f46;
+}
+.status-rejected {
+  background-color: #fee2e2;
+  color: #b91c1c;
+}
+.job-date {
+  margin-top: 8px;
+  font-size: 13px;
+  color: #6b7280;
+}
+.job-actions {
+  margin-top: 12px;
+  display: flex;
+  gap: 8px;
 }
