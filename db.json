@@ -1,30 +1,24 @@
 {
   "user": [
     {
-      "id": "1",
-      "username": "zodwa",
+      "id": "106c",
+      "username": "thsag",
+      "password": "gr"
+    },
+    {
+      "id": "a895",
+      "username": "shantela",
+      "password": "123456"
+    },
+    {
+      "id": "34b6",
+      "username": "Dlozi",
       "password": "12345"
     },
     {
-      "id": "2",
-      "username": "andile",
-      "password": "12345678"
-    },
-    {
-      "id": 3,
-      "username": "zama",
-      "password": "123"
-    }
-  ],
-
-  "jobs": [
-    {
-      "id": 1,
-      "company": "Amazon",
-      "role": "Backend Engineer",
-      "status": "Interviewd",
-      "dateApply": "2025-09-10",
-      "details": "Node.js and AWS required"
+      "id": "e1d8",
+      "username": "melokuhle",
+      "password": "2468"
     }
   ]
 }

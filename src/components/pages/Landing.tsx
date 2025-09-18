@@ -4,9 +4,7 @@ import { Link } from 'react-router';
 export default function Landing() {
   return (
     <div>
-      <div className="blueline"></div>
-
-      <div className="hearder">
+    <div className="hearder">
         <img className="logo" src="/src/assets/Logo-preview.jpg" alt="" />
         <h1>JobTacker</h1>
       </div>
@@ -49,7 +47,7 @@ export default function Landing() {
 
       <div className="btn">
         <button className="button" type="submit">
-          <Link className="link-a" to="/login">Get Started</Link>
+          <Link className="link-a" to="/register">Get Started</Link>
         </button>
       </div>
     </div>

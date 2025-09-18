@@ -11,40 +11,50 @@ main {
 }
 #root {
 font-family: Arial, Helvetica, sans-serif;
-  /* display: flex;
-  align-items: center;
-  justify-content: center; */
+ 
 }
 .blueline{
   width: 100%;
   height: 2vh;
-  background-color: #3D61BB;
+ 
 }
 
 .hearder{
-  width: 100%;
-  height: 6vh;
+ width: 100%;
+ height: 4vh;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: flex-start;
+  padding: 2%;
 
+}
 
+ .head{
+  width: 6%;
+  height: 8vh;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
  }
 
 .logo{
-width: 8%;
-  font-size: 20px;
-  font-weight: bold;
+width: 6%;
+font-size: 20px;
+font-weight: bold;
 }
 
+.log{
+  width: 100%;
+}
 .heroSection{
 display: flex;
  /* flex-direction: row; */
-
-  width: 100%;
-  height: 40vh;
-  padding: 10px;
+ width: 100%;
+ height: 40vh;
+ padding: 10px;
+ margin-top: 0%;
 
 }
 
@@ -92,11 +102,11 @@ height: 100vh
 }
 
 .login-section{
-  display: flex;
-  flex-direction: row;
-  background-color: #3D61BB;
-  width: 100%;
-  height: 100vh;
+ display: flex;
+ justify-content: center;
+ background-color: #3D61BB;
+ width: 100%;
+ height: 100vh;
 }
 
 .register-section{
@@ -109,10 +119,9 @@ height: 100vh
 
 .card{
   border: 2px solid white;
-  width: 20%;
-  height: 60vh;
-  margin-top: 10%;
-  margin-left: 30%;
+  width: 40%;
+  height: 50vh;
+  margin-top: 11%;
   border-radius: 30px;
   background-color: lightgray;
  
@@ -163,7 +172,7 @@ color: black;
 
   color: aliceblue;
   background-color: lightgrey;
-  height: 47PX;
+height: 47PX;
  border: none;
  outline: none;
  border-radius: 10PX;
@@ -172,9 +181,7 @@ color: black;
 
 .link-login{
   color: black;
-  text-decoration: none;
-  font-size: x-large;
-}
+ }
 
 .homepage {
   min-height: 100vh;

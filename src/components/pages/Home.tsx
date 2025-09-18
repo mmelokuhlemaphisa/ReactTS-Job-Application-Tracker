@@ -5,8 +5,8 @@ export default function Home() {
     <div>
       <div className="homepage">
         <nav className="navbar">
-          <div className="hearder">
-            <img className="logo" src="/src/assets/Logo-preview.jpg" alt="" />
+          <div className='head'>
+            <img className="log" src="/src/assets/Logo-preview.jpg" alt="" />
             <h1>JobTacker</h1>
           </div>
 
