@@ -4,16 +4,18 @@ export default function Home() {
   return (
     <div>
       <div className="homepage">
-       
         <nav className="navbar">
-          <h1 className="logo">JobTracker</h1>
+          <div className="hearder">
+            <img className="logo" src="/src/assets/Logo-preview.jpg" alt="" />
+            <h1>JobTacker</h1>
+          </div>
+
           <div className="nav-buttons">
-            
             <button className="btn btn-green">Add Job</button>
             <button className="btn btn-red">Logout</button>
           </div>
         </nav>
-     
+
         <div className="filters">
           <input
             type="text"
@@ -26,12 +28,13 @@ export default function Home() {
             <option value="Interviewed">Interviewed</option>
             <option value="Rejected">Rejected</option>
           </select>
+
           <select className="select">
             <option value="asc">Sort by Date (Asc)</option>
             <option value="desc">Sort by Date (Desc)</option>
           </select>
         </div>
-       
+
         <div className="job-list">
           <div className="job-card">
             <h2 className="job-company">Google</h2>
@@ -46,6 +49,7 @@ export default function Home() {
           </div>
         </div>
       </div>
+      <footer>hhghhhh</footer>
     </div>
   );
 }

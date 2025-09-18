@@ -17,22 +17,25 @@ font-family: Arial, Helvetica, sans-serif;
 }
 .blueline{
   width: 100%;
-  height: 3vh;
+  height: 2vh;
   background-color: #3D61BB;
 }
 
 .hearder{
   width: 100%;
-  height: 5vh;
+  height: 6vh;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: flex-start;
 
+
  }
 
 .logo{
-width: 3%;
+width: 8%;
+  font-size: 20px;
+  font-weight: bold;
 }
 
 .heroSection{
@@ -40,7 +43,7 @@ display: flex;
  /* flex-direction: row; */
 
   width: 100%;
-  height: 50vh;
+  height: 40vh;
   padding: 10px;
 
 }
@@ -65,7 +68,7 @@ display: flex;
 }
 
 .button{
-  width: 15%;
+  width: 20%;
   color: aliceblue;
   background-color: #3D61BB;
   height: 45PX;
@@ -106,10 +109,10 @@ height: 100vh
 
 .card{
   border: 2px solid white;
-  width: 50%;
+  width: 20%;
   height: 60vh;
   margin-top: 10%;
-  margin-left: 11%;
+  margin-left: 30%;
   border-radius: 30px;
   background-color: lightgray;
  
@@ -134,14 +137,6 @@ label {
   margin-bottom: 0.3rem;
 }
 
-#username{
-justify-content: flex-start;
-}
-
-#passwords{
-
-}
-
 input{
 width: 80%;
 padding: 20px;
@@ -153,6 +148,7 @@ padding: 20px;
   width: 50%;
   text-align: center;
   margin-top: 19%;
+  margin-right: 6%;
   color: white;
   gap: 2%;
 }
@@ -164,7 +160,7 @@ color: black;
 }
 
 .loginBtn{
-  width: 20%;
+
   color: aliceblue;
   background-color: lightgrey;
   height: 47PX;
@@ -304,4 +300,15 @@ color: black;
   margin-top: 12px;
   display: flex;
   gap: 8px;
+}
+
+footer{
+  width: 100%;
+  height: 6vh;
+  background: #fff;
+  padding: 16px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }

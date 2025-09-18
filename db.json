@@ -1,0 +1,30 @@
+{
+  "user": [
+    {
+      "id": "1",
+      "username": "zodwa",
+      "password": "12345"
+    },
+    {
+      "id": "2",
+      "username": "andile",
+      "password": "12345678"
+    },
+    {
+      "id": 3,
+      "username": "zama",
+      "password": "123"
+    }
+  ],
+
+  "jobs": [
+    {
+      "id": 1,
+      "company": "Amazon",
+      "role": "Backend Engineer",
+      "status": "Interviewd",
+      "dateApply": "2025-09-10",
+      "details": "Node.js and AWS required"
+    }
+  ]
+}

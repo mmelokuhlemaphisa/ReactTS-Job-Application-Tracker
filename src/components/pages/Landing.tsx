@@ -7,7 +7,7 @@ export default function Landing() {
       <div className="blueline"></div>
 
       <div className="hearder">
-        <img className="logo" src="/src/assets/Logo.jpg" alt="" />
+        <img className="logo" src="/src/assets/Logo-preview.jpg" alt="" />
         <h1>JobTacker</h1>
       </div>
 
