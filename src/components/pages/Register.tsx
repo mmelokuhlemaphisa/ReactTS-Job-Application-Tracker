@@ -12,47 +12,49 @@ export default function Register() {
   const [newUser, setNewUser] = useState<User | null>(null);
   const navigate = useNavigate();
 
-  useEffect(() => {
-    if (!newUser) return;
+useEffect(() => {
+  if (!newUser) return;
 
-    const saveUser = async () => {
-      try {
-        // Check if password already exists
-        const res = await fetch(
-          `http://localhost:3000/user?password=${newUser.password}`
+  const saveUser = async () => {
+    try {
+      // Check if password already exists
+      const res = await fetch(
+        `http://localhost:3000/user?password=${newUser.password}`
+      );
+      const existingUsers = await res.json();
+
+      if (existingUsers.length > 0) {
+        alert(
+          "This password is already used. Please choose a different password."
         );
-        const existingUsers = await res.json();
-
-        if (existingUsers.length > 0) {
-          alert(
-            "This password is already used. Please choose a different password."
-          );
-          return;
-        }
-
-        // Save user if password is unique
-        const response = await fetch("http://localhost:3000/user", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(newUser),
-        });
-
-        if (response.ok) {
-          const data = await response.json();
-          console.log("User ID:", data.id);
-          alert(`User ${data.username} registered successfully!`);
-          navigate("/login");
-        } else {
-          alert("Failed to register user");
-        }
-      } catch (error) {
-        console.error("Error:", error);
-        alert("Something went wrong!");
+        return;
       }
-    };
 
-    saveUser();
-  }, [newUser, navigate]);
+      // Save user if password is unique
+      const response = await fetch("http://localhost:3000/user", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(newUser),
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        // ✅ Save the new user to localStorage so they are logged in
+        localStorage.setItem("currentUser", JSON.stringify(data));
+        alert(`User ${data.username} registered successfully!`);
+        navigate("/home"); // go directly to home after registration
+      } else {
+        alert("Failed to register user");
+      }
+    } catch (error) {
+      console.error("Error:", error);
+      alert("Something went wrong!");
+    }
+  };
+
+  saveUser();
+}, [newUser, navigate]);
+
 
   const handleRegister = (e: React.FormEvent) => {
     e.preventDefault();

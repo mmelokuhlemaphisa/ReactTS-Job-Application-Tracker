@@ -29,6 +29,11 @@ export default function Home({ currentUser }: { currentUser: User }) {
     details: "",
   });
 
+  // search / filter / sort
+  const [searchTerm, setSearchTerm] = useState("");
+  const [filterStatus, setFilterStatus] = useState("All");
+  const [sortBy, setSortBy] = useState("date");
+
   // Fetch jobs for logged-in user
   useEffect(() => {
     const fetchJobs = async () => {
@@ -66,7 +71,7 @@ export default function Home({ currentUser }: { currentUser: User }) {
 
     try {
       if (editJobId !== null) {
-        // UPDATE
+        // UPDATE existing job
         await fetch(`http://localhost:3000/jobs/${editJobId}`, {
           method: "PUT",
           headers: { "Content-Type": "application/json" },
@@ -78,12 +83,14 @@ export default function Home({ currentUser }: { currentUser: User }) {
         });
         setJobs(
           jobs.map((job) =>
-            job.id === editJobId ? { ...job, ...newJob, id: editJobId } : job
+            job.id === editJobId
+              ? { ...job, ...newJob, id: editJobId, userId: currentUser.id }
+              : job
           )
         );
         setEditJobId(null);
       } else {
-        // CREATE
+        // CREATE new job for this user
         const res = await fetch("http://localhost:3000/jobs", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -92,6 +99,7 @@ export default function Home({ currentUser }: { currentUser: User }) {
         const savedJob: Job = await res.json();
         setJobs([...jobs, savedJob]);
       }
+
       setShowModal(false);
       setNewJob({
         company: "",
@@ -125,13 +133,31 @@ export default function Home({ currentUser }: { currentUser: User }) {
     }
   };
 
+  // Filter + Search + Sort
+  const filteredJobs = jobs
+    .filter((job) =>
+      `${job.company} ${job.role}`
+        .toLowerCase()
+        .includes(searchTerm.toLowerCase())
+    )
+    .filter((job) =>
+      filterStatus === "All" ? true : job.status === filterStatus
+    )
+    .sort((a, b) => {
+      if (sortBy === "date") {
+        return new Date(b.date).getTime() - new Date(a.date).getTime();
+      } else {
+        return a.company.localeCompare(b.company);
+      }
+    });
+
   return (
     <div>
       <div className="homepage">
         <nav className="navbar">
           <div className="head">
             <img className="log" src="/src/assets/Logo-preview.jpg" alt="" />
-            <h1>JobTacker</h1>
+            <h1>JobTracker</h1>
           </div>
 
           <div className="nav-buttons">
@@ -157,6 +183,37 @@ export default function Home({ currentUser }: { currentUser: User }) {
           </div>
         </nav>
 
+        {/* Search / Filter / Sort Controls */}
+        <div className="controls">
+          <input
+            type="text"
+            className="control-input"
+            placeholder="🔍 Search by company or role"
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+          />
+
+          <select
+            className="control-select"
+            value={filterStatus}
+            onChange={(e) => setFilterStatus(e.target.value)}
+          >
+            <option value="All">All</option>
+            <option value="Applied">Applied</option>
+            <option value="Interviewed">Interviewed</option>
+            <option value="Rejected">Rejected</option>
+          </select>
+
+          <select
+            className="control-select"
+            value={sortBy}
+            onChange={(e) => setSortBy(e.target.value)}
+          >
+            <option value="date">Sort by Date</option>
+            <option value="company">Sort by Company</option>
+          </select>
+        </div>
+
         {/* Modal */}
         {showModal && (
           <div className="modal-overlay">
@@ -180,6 +237,7 @@ export default function Home({ currentUser }: { currentUser: User }) {
                   required
                 />
                 <select
+                  className="filters"
                   name="status"
                   value={newJob.status}
                   onChange={handleChange}
@@ -188,6 +246,7 @@ export default function Home({ currentUser }: { currentUser: User }) {
                   <option value="Interviewed">Interviewed</option>
                   <option value="Rejected">Rejected</option>
                 </select>
+
                 <input
                   type="date"
                   name="date"
@@ -220,8 +279,9 @@ export default function Home({ currentUser }: { currentUser: User }) {
           </div>
         )}
 
+        {/* Job List */}
         <div className="job-list">
-          {jobs.map((job) => (
+          {filteredJobs.map((job) => (
             <div key={job.id} className="job-card">
               <h2 className="job-company">{job.company}</h2>
               <p className="job-role">{job.role}</p>

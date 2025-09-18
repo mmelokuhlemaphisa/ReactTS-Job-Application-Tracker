@@ -1,35 +1,25 @@
 {
   "user": [
     {
-      "id": "0d89",
+      "id": "f086",
       "username": "melokuhle",
-      "password": "maphisa"
+      "password": "12345"
+    },
+    {
+      "id": "1934",
+      "username": "sne",
+      "password": "123"
     }
   ],
   "jobs": [
     {
-      "id": "5b76",
-      "company": "mlab",
-      "role": "esds",
-      "status": "Applied",
-      "date": "2025-09-08",
-      "details": "rytrhthth"
-    },
-    {
-      "id": "b517",
-      "company": "rtrth",
-      "role": "tegetrghb",
+      "id": "cd5f",
+      "company": "2q3e2",
+      "role": "42423",
       "status": "Interviewed",
-      "date": "2025-09-03",
-      "details": "thgthth"
-    },
-    {
-      "id": "1ba0",
-      "company": "thbhb",
-      "role": "thh",
-      "status": "Interviewed",
-      "date": "2025-09-02",
-      "details": "hhhhhhh"
+      "date": "2025-09-09",
+      "details": "4r234re2q3r4",
+      "userId": "8f8c"
     }
   ]
 }

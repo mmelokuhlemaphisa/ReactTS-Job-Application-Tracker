@@ -22,11 +22,11 @@ export default function Login() {
       const data = await response.json();
 
       if (data.length > 0) {
-      
-         alert(`Welcome ${data[0].username}!`);
-        navigate("/home"); 
+        const user = data[0];
+        localStorage.setItem("currentUser", JSON.stringify(user)); // save logged-in user
+        alert(`Welcome ${user.username}!`);
+        navigate("/home");
       } else {
-       
         alert("Invalid username or password!");
       }
     } catch (error) {
