@@ -239,6 +239,8 @@ height: 47PX;
 .btn-red:hover {
   background-color: #dc2626;
 }
+
+
 /* Filters */
 .filters {
   background: #fff;
@@ -258,8 +260,11 @@ height: 47PX;
   flex: 1;
   min-width: 200px;
 }
+
+
 /* Job List */
 .job-list {
+  height: 20vh;
   padding: 20px;
   display: grid;
   gap: 20px;
@@ -294,10 +299,12 @@ height: 47PX;
 .status-applied {
   background-color: #fef3c7;
   color: #b45309;
+  color: black;
 }
 .status-interviewed {
   background-color: #d1fae5;
   color: #065f46;
+  color:black;
 }
 .status-rejected {
   background-color: #fee2e2;
@@ -363,7 +370,7 @@ height: 47PX;
 }
 
 
-footer{
+/* footer{
   width: 100%;
   height: 6vh;
   background: #fff;
@@ -372,4 +379,119 @@ footer{
   justify-content: space-between;
   align-items: center;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+} */
+
+.jobpage {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #2c3e50;
+  padding: 1rem 2rem;
+  color: white;
+}
+
+.navbar .head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.navbar .log {
+  height: 40px;
+  border-radius: 50%;
+}
+
+/* Container */
+.job-details-container {
+  flex: 1;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.back-btn {
+  margin-bottom: 1rem;
+}
+
+/* Job Card */
+.job-details-card {
+  background: white;
+  border-radius: 10px;
+  padding: 2rem;
+  max-width: 600px;
+  width: 100%;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.job-title {
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
+  color: #34495e;
+}
+
+.job-role {
+  font-size: 1.3rem;
+  color: #2c3e50;
+  margin-bottom: 1rem;
+}
+
+.job-meta {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.job-date {
+  font-size: 0.9rem;
+  color: #7f8c8d;
+}
+
+.job-description h3 {
+  margin-bottom: 0.5rem;
+  color: #2c3e50;
+}
+
+.job-description p {
+  line-height: 1.6;
+  color: #555;
+}
+
+Status styles
+.status {
+  padding: 0.3rem 0.7rem;
+  border-radius: 5px;
+  font-size: 0.9rem;
+  font-weight: bold;
+  color: white;
+}
+/* 
+.status-applied {
+  background: #3498db;
+}
+
+.status-interviewed {
+  background: #f1c40f;
+  color: black;
+}
+
+.status-rejected {
+  background: #e74c3c;
+} */
+
+
+
+/* Footer */
+.footer {
+  background: #2c3e50;
+  color: white;
+  text-align: center;
+  padding: 1rem;
 }

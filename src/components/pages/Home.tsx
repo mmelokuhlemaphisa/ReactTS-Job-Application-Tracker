@@ -1,26 +1,50 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router";
 
-export default function Home() {
-  const [showModal, setShowModal] = useState(false);
-  const [jobs, setJobs] = useState([
-    {
-      id: 1,
-      company: "Google",
-      role: "Frontend Developer",
-      status: "Applied",
-      date: "2025-09-01",
-      details: "Developed UI components using React.",
-    },
-  ]);
+interface Job {
+  id: number;
+  userId: number;
+  company: string;
+  role: string;
+  status: string;
+  date: string;
+  details: string;
+}
 
-  const [newJob, setNewJob] = useState({
+interface User {
+  id: number;
+  username: string;
+}
+
+export default function Home({ currentUser }: { currentUser: User }) {
+  const [jobs, setJobs] = useState<Job[]>([]);
+  const [showModal, setShowModal] = useState(false);
+  const [editJobId, setEditJobId] = useState<number | null>(null);
+
+  const [newJob, setNewJob] = useState<Omit<Job, "id" | "userId">>({
     company: "",
     role: "",
     status: "Applied",
     date: "",
     details: "",
   });
+
+  // Fetch jobs for logged-in user
+  useEffect(() => {
+    const fetchJobs = async () => {
+      try {
+        const res = await fetch(
+          `http://localhost:3000/jobs?userId=${currentUser.id}`
+        );
+        const data: Job[] = await res.json();
+        setJobs(data);
+      } catch (err) {
+        console.error("Error fetching jobs:", err);
+      }
+    };
+
+    fetchJobs();
+  }, [currentUser.id]);
 
   const handleChange = (
     e: React.ChangeEvent<
@@ -31,7 +55,8 @@ export default function Home() {
     setNewJob({ ...newJob, [name]: value });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  // Create or Update job
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
     if (!newJob.company || !newJob.role || !newJob.date) {
@@ -39,15 +64,65 @@ export default function Home() {
       return;
     }
 
-    setJobs([...jobs, { ...newJob, id: Date.now() }]);
-    setShowModal(false);
+    try {
+      if (editJobId !== null) {
+        // UPDATE
+        await fetch(`http://localhost:3000/jobs/${editJobId}`, {
+          method: "PUT",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            ...newJob,
+            id: editJobId,
+            userId: currentUser.id,
+          }),
+        });
+        setJobs(
+          jobs.map((job) =>
+            job.id === editJobId ? { ...job, ...newJob, id: editJobId } : job
+          )
+        );
+        setEditJobId(null);
+      } else {
+        // CREATE
+        const res = await fetch("http://localhost:3000/jobs", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ ...newJob, userId: currentUser.id }),
+        });
+        const savedJob: Job = await res.json();
+        setJobs([...jobs, savedJob]);
+      }
+      setShowModal(false);
+      setNewJob({
+        company: "",
+        role: "",
+        status: "Applied",
+        date: "",
+        details: "",
+      });
+    } catch (err) {
+      console.error("Error saving job:", err);
+      alert("Failed to save job");
+    }
+  };
+
+  const handleEdit = (job: Job) => {
     setNewJob({
-      company: "",
-      role: "",
-      status: "Applied",
-      date: "",
-      details: "",
+      company: job.company,
+      role: job.role,
+      status: job.status,
+      date: job.date,
+      details: job.details,
     });
+    setEditJobId(job.id);
+    setShowModal(true);
+  };
+
+  const handleDelete = async (id: number) => {
+    if (window.confirm("Are you sure you want to delete this job?")) {
+      await fetch(`http://localhost:3000/jobs/${id}`, { method: "DELETE" });
+      setJobs(jobs.filter((job) => job.id !== id));
+    }
   };
 
   return (
@@ -62,7 +137,17 @@ export default function Home() {
           <div className="nav-buttons">
             <button
               className="btn btn-green"
-              onClick={() => setShowModal(true)}
+              onClick={() => {
+                setShowModal(true);
+                setEditJobId(null);
+                setNewJob({
+                  company: "",
+                  role: "",
+                  status: "Applied",
+                  date: "",
+                  details: "",
+                });
+              }}
             >
               Add Job
             </button>
@@ -76,7 +161,7 @@ export default function Home() {
         {showModal && (
           <div className="modal-overlay">
             <div className="modal">
-              <h2>Add New Job</h2>
+              <h2>{editJobId !== null ? "Edit Job" : "Add New Job"}</h2>
               <form onSubmit={handleSubmit}>
                 <input
                   type="text"
@@ -114,12 +199,13 @@ export default function Home() {
                   name="details"
                   value={newJob.details}
                   onChange={handleChange}
-                  placeholder="Extra details about job and company"
+                  placeholder="Extra details"
                   rows={4}
                 />
+
                 <div className="modal-buttons">
                   <button type="submit" className="btn btn-green">
-                    Save Job
+                    {editJobId !== null ? "Update Job" : "Save Job"}
                   </button>
                   <button
                     type="button"
@@ -134,25 +220,6 @@ export default function Home() {
           </div>
         )}
 
-        <div className="filters">
-          <input
-            type="text"
-            placeholder="Search by company or role..."
-            className="search-input"
-          />
-          <select className="select">
-            <option value="">Filter by Status</option>
-            <option value="Applied">Applied</option>
-            <option value="Interviewed">Interviewed</option>
-            <option value="Rejected">Rejected</option>
-          </select>
-
-          <select className="select">
-            <option value="asc">Sort by Date (Asc)</option>
-            <option value="desc">Sort by Date (Desc)</option>
-          </select>
-        </div>
-
         <div className="job-list">
           {jobs.map((job) => (
             <div key={job.id} className="job-card">
@@ -163,16 +230,33 @@ export default function Home() {
               </span>
               <p className="job-date">Date: {job.date}</p>
               <p className="job-details">{job.details}</p>
+
               <div className="job-actions">
-                <button className="btn btn-blue">Details</button>
-                <button className="btn btn-green">Edit</button>
-                <button className="btn btn-red">Delete</button>
+                <button className="btn btn-blue">
+                  <Link to={`/jobpage/${job.id}`}>Details</Link>
+                </button>
+
+                <button
+                  className="btn btn-blue"
+                  onClick={() => handleEdit(job)}
+                >
+                  Edit
+                </button>
+                <button
+                  className="btn btn-red"
+                  onClick={() => handleDelete(job.id)}
+                >
+                  Delete
+                </button>
               </div>
             </div>
           ))}
         </div>
       </div>
-      <footer>hhghhhh</footer>
+
+      <footer className="footer">
+        <p>© {new Date().getFullYear()} JobTracker | All rights reserved.</p>
+      </footer>
     </div>
   );
 }

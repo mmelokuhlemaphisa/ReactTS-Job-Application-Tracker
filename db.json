@@ -1,39 +1,35 @@
 {
   "user": [
     {
-      "id": "106c",
-      "username": "thsag",
-      "password": "gr"
-    },
-    {
-      "id": "a895",
-      "username": "shantela",
-      "password": "123456"
-    },
-    {
-      "id": "34b6",
-      "username": "Dlozi",
-      "password": "12345"
-    },
-    {
-      "id": "e1d8",
+      "id": "0d89",
       "username": "melokuhle",
-      "password": "2468"
-    },
-    {
-      "id": "3655",
-      "username": "shantela",
-      "password": "54321"
-    },
-    {
-      "id": "ff42",
-      "username": "melokuhle",
-      "password": "2468"
-    },
-    {
-      "id": "e7cb",
-      "username": "sabelo",
-      "password": "1234567"
+      "password": "maphisa"
     }
-  ] 
+  ],
+  "jobs": [
+    {
+      "id": "5b76",
+      "company": "mlab",
+      "role": "esds",
+      "status": "Applied",
+      "date": "2025-09-08",
+      "details": "rytrhthth"
+    },
+    {
+      "id": "b517",
+      "company": "rtrth",
+      "role": "tegetrghb",
+      "status": "Interviewed",
+      "date": "2025-09-03",
+      "details": "thgthth"
+    },
+    {
+      "id": "1ba0",
+      "company": "thbhb",
+      "role": "thh",
+      "status": "Interviewed",
+      "date": "2025-09-02",
+      "details": "hhhhhhh"
+    }
+  ]
 }
