@@ -23,7 +23,7 @@ export default function Login() {
 
       if (data.length > 0) {
       
-        alert(`Welcome ${data[0].username}!`);
+         alert(`Welcome ${data[0].username}!`);
         navigate("/home"); 
       } else {
        
@@ -73,7 +73,6 @@ export default function Login() {
              </p>
         </form>
       </div>
-
-    </div>
+</div>
   );
 }
