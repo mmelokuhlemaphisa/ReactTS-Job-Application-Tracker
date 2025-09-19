@@ -1,3 +1,5 @@
+<img src="https://socialify.git.ci/mmelokuhlemaphisa/ReactTS-Job-Application-Tracker/image?language=1&owner=1&name=1&stargazers=1&theme=Light" alt="ReactTS-Job-Application-Tracker" width="640" height="320" />
+
 
 # Project Description
 
@@ -27,18 +29,7 @@ JobTracker is a React-based web application designed to help users track their j
 
 * Storage: LocalStorage for current user session
 
-# Project Structure
 
-JobTracker/
-├─ public/
-├─ src/
-│  ├─ assets/         # Logo and images
-│  ├─ components/     # React components
-│  │  ├─ pages/       # Pages like Home, Login, Register, JobPage
-│  └─ App.tsx         # Main App with Routes
-├─ db.json             # JSON Server database
-├─ package.json
-└─ README.md
 
 
 # Start JSON Server
