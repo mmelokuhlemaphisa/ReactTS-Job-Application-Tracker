@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
 
 interface User {
+  id?: number; // ✅ needed for jobs relation
   username: string;
   password: string;
 }
@@ -12,49 +13,50 @@ export default function Register() {
   const [newUser, setNewUser] = useState<User | null>(null);
   const navigate = useNavigate();
 
-useEffect(() => {
-  if (!newUser) return;
+  useEffect(() => {
+    if (!newUser) return;
 
-  const saveUser = async () => {
-    try {
-      // Check if password already exists
-      const res = await fetch(
-        `http://localhost:3000/user?password=${newUser.password}`
-      );
-      const existingUsers = await res.json();
-
-      if (existingUsers.length > 0) {
-        alert(
-          "This password is already used. Please choose a different password."
+    const saveUser = async () => {
+      try {
+        // ✅ Check if username already exists (not password)
+        const res = await fetch(
+          `http://localhost:3000/users?username=${newUser.username}`
         );
-        return;
+        const existingUsers = await res.json();
+
+        if (existingUsers.length > 0) {
+          alert(
+            "This username is already taken. Please choose a different one."
+          );
+          return;
+        }
+
+        // ✅ Save new user to /users collection
+        const response = await fetch("http://localhost:3000/users", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(newUser),
+        });
+
+        if (response.ok) {
+          const data = await response.json();
+
+          // ✅ Save the new user in localStorage
+          localStorage.setItem("currentUser", JSON.stringify(data));
+
+          alert(`User ${data.username} registered successfully!`);
+          navigate("/home"); // go directly to home after registration
+        } else {
+          alert("Failed to register user");
+        }
+      } catch (error) {
+        console.error("Error:", error);
+        alert("Something went wrong!");
       }
+    };
 
-      // Save user if password is unique
-      const response = await fetch("http://localhost:3000/user", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(newUser),
-      });
-
-      if (response.ok) {
-        const data = await response.json();
-        // ✅ Save the new user to localStorage so they are logged in
-        localStorage.setItem("currentUser", JSON.stringify(data));
-        alert(`User ${data.username} registered successfully!`);
-        navigate("/home"); // go directly to home after registration
-      } else {
-        alert("Failed to register user");
-      }
-    } catch (error) {
-      console.error("Error:", error);
-      alert("Something went wrong!");
-    }
-  };
-
-  saveUser();
-}, [newUser, navigate]);
-
+    saveUser();
+  }, [newUser, navigate]);
 
   const handleRegister = (e: React.FormEvent) => {
     e.preventDefault();
@@ -91,9 +93,13 @@ useEffect(() => {
             <button className="button" type="submit">
               Sign up
             </button>
-            <br /><br />
+            <br />
+            <br />
             <p>
-              Already have an account? <Link to="/login" className="link-logout">Sign in</Link>
+              Already have an account?{" "}
+              <Link to="/login" className="link-logout">
+                Sign in
+              </Link>
             </p>
           </form>
         </div>

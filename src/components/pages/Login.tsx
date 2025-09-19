@@ -6,7 +6,7 @@ export default function Login() {
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
-  const handleLogin = async (e:any) => {
+  const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
 
     if (!username || !password) {
@@ -15,15 +15,18 @@ export default function Login() {
     }
 
     try {
-    
+      // ✅ Make sure your db.json has "users" not "user"
       const response = await fetch(
-        `http://localhost:3000/user?username=${username}&password=${password}`
+        `http://localhost:3000/users?username=${username}&password=${password}`
       );
       const data = await response.json();
 
       if (data.length > 0) {
         const user = data[0];
-        localStorage.setItem("currentUser", JSON.stringify(user)); // save logged-in user
+
+        // ✅ Save only this user object
+        localStorage.setItem("currentUser", JSON.stringify(user));
+
         alert(`Welcome ${user.username}!`);
         navigate("/home");
       } else {
@@ -56,23 +59,25 @@ export default function Login() {
           <label htmlFor="password">Password:</label>
           <br />
           <input
-            type="text"
+            type="password" // ✅ change from "text" to "password"
             placeholder="Enter password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
           <br />
           <br />
-          <button className="button" type="submit">Login</button>
-<br /> <br />
- <p>
-              Don't have an account?
-              <Link className="link-login" to="/register">
-               Register
-              </Link>
-             </p>
+          <button className="button" type="submit">
+            Login
+          </button>
+          <br /> <br />
+          <p>
+            Don't have an account?
+            <Link className="link-login" to="/register">
+              Register
+            </Link>
+          </p>
         </form>
       </div>
-</div>
+    </div>
   );
 }

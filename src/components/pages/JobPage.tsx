@@ -2,12 +2,18 @@ import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 
 interface Job {
-  id: number;
+  id: string;
   company: string;
   role: string;
   status: string;
   date: string;
   details: string;
+  userId: string;
+}
+
+interface User {
+  id: string;
+  username: string;
 }
 
 export default function JobPage() {
@@ -17,28 +23,47 @@ export default function JobPage() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    const currentUser: User = JSON.parse(
+      localStorage.getItem("currentUser") || "{}"
+    );
+
+    if (!currentUser.id) {
+      alert("Please log in first.");
+      navigate("/login");
+      return;
+    }
+
     const fetchJob = async () => {
       try {
         const response = await fetch(`http://localhost:3000/jobs/${id}`);
         if (!response.ok) throw new Error("Job not found");
-        const data = await response.json();
+        const data: Job = await response.json();
+
+        // ✅ Check if this job belongs to the logged-in user
+        if (data.userId !== currentUser.id) {
+          alert("You do not have access to this job!");
+          navigate("/home");
+          return;
+        }
+
         setJob(data);
       } catch (err) {
         console.error(err);
+        alert("Job not found or you do not have access.");
+        navigate("/home");
       } finally {
         setLoading(false);
       }
     };
 
     fetchJob();
-  }, [id]);
+  }, [id, navigate]);
 
   if (loading) return <p className="loading">Loading job details...</p>;
   if (!job) return <p className="error">Job not found</p>;
 
   return (
     <div className="jobpage">
-      {/* Header */}
       <nav className="navbar">
         <div className="head">
           <img className="log" src="/src/assets/Logo-preview.jpg" alt="logo" />
@@ -46,7 +71,6 @@ export default function JobPage() {
         </div>
       </nav>
 
-      {/* Content */}
       <div className="job-details-container">
         <button onClick={() => navigate(-1)} className="btn btn-red back-btn">
           ← Back
@@ -70,7 +94,6 @@ export default function JobPage() {
         </div>
       </div>
 
-      {/* Footer */}
       <footer className="footer">
         <p>© {new Date().getFullYear()} JobTracker | All rights reserved.</p>
       </footer>

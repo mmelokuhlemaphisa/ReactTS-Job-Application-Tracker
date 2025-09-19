@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router-dom";
 
 interface Job {
-  id: number;
-  userId: number;
+  id: string;
+  userId: string;
   company: string;
   role: string;
   status: string;
@@ -12,15 +12,19 @@ interface Job {
 }
 
 interface User {
-  id: number;
+  id: string;
   username: string;
+
 }
 
-export default function Home({ currentUser }: { currentUser: User }) {
+interface HomeProps {
+  currentUser: User | null;
+}
+
+export default function Home({currentUser}:HomeProps)  {
   const [jobs, setJobs] = useState<Job[]>([]);
   const [showModal, setShowModal] = useState(false);
-  const [editJobId, setEditJobId] = useState<number | null>(null);
-
+  const [editJobId, setEditJobId] = useState<string | null>(null);
   const [newJob, setNewJob] = useState<Omit<Job, "id" | "userId">>({
     company: "",
     role: "",
@@ -29,13 +33,24 @@ export default function Home({ currentUser }: { currentUser: User }) {
     details: "",
   });
 
-  // search / filter / sort
-  const [searchTerm, setSearchTerm] = useState("");
-  const [filterStatus, setFilterStatus] = useState("All");
-  const [sortBy, setSortBy] = useState("date");
+  const navigate = useNavigate();
 
-  // Fetch jobs for logged-in user
+  // ✅ Get currentUser from localStorage
+  currentUser = JSON.parse(
+    localStorage.getItem("currentUser") || "null"
+  );
+
+ const filterByUserId = (jobs: Job[], userId: string): Job[] => {
+   return jobs.filter((job) => job.userId === userId);
+ };
+
   useEffect(() => {
+    if (!currentUser) {
+      alert("Please login first.");
+      navigate("/login");
+      return;
+    }
+
     const fetchJobs = async () => {
       try {
         const res = await fetch(
@@ -49,7 +64,7 @@ export default function Home({ currentUser }: { currentUser: User }) {
     };
 
     fetchJobs();
-  }, [currentUser.id]);
+  }, [currentUser, navigate]);
 
   const handleChange = (
     e: React.ChangeEvent<
@@ -60,7 +75,6 @@ export default function Home({ currentUser }: { currentUser: User }) {
     setNewJob({ ...newJob, [name]: value });
   };
 
-  // Create or Update job
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
@@ -69,9 +83,11 @@ export default function Home({ currentUser }: { currentUser: User }) {
       return;
     }
 
+    if (!currentUser) return;
+
     try {
       if (editJobId !== null) {
-        // UPDATE existing job
+        // Update existing job
         await fetch(`http://localhost:3000/jobs/${editJobId}`, {
           method: "PUT",
           headers: { "Content-Type": "application/json" },
@@ -81,6 +97,7 @@ export default function Home({ currentUser }: { currentUser: User }) {
             userId: currentUser.id,
           }),
         });
+
         setJobs(
           jobs.map((job) =>
             job.id === editJobId
@@ -88,14 +105,16 @@ export default function Home({ currentUser }: { currentUser: User }) {
               : job
           )
         );
+
         setEditJobId(null);
       } else {
-        // CREATE new job for this user
+        // Create new job
         const res = await fetch("http://localhost:3000/jobs", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ ...newJob, userId: currentUser.id }),
         });
+
         const savedJob: Job = await res.json();
         setJobs([...jobs, savedJob]);
       }
@@ -126,14 +145,19 @@ export default function Home({ currentUser }: { currentUser: User }) {
     setShowModal(true);
   };
 
-  const handleDelete = async (id: number) => {
+  const handleDelete = async (id: string) => {
+    if (!currentUser) return;
+
     if (window.confirm("Are you sure you want to delete this job?")) {
       await fetch(`http://localhost:3000/jobs/${id}`, { method: "DELETE" });
       setJobs(jobs.filter((job) => job.id !== id));
     }
   };
 
-  // Filter + Search + Sort
+  const [searchTerm, setSearchTerm] = useState("");
+  const [filterStatus, setFilterStatus] = useState("All");
+  const [sortBy, setSortBy] = useState("date");
+
   const filteredJobs = jobs
     .filter((job) =>
       `${job.company} ${job.role}`
@@ -143,13 +167,13 @@ export default function Home({ currentUser }: { currentUser: User }) {
     .filter((job) =>
       filterStatus === "All" ? true : job.status === filterStatus
     )
-    .sort((a, b) => {
-      if (sortBy === "date") {
-        return new Date(b.date).getTime() - new Date(a.date).getTime();
-      } else {
-        return a.company.localeCompare(b.company);
-      }
-    });
+    .sort((a, b) =>
+      sortBy === "date"
+        ? new Date(b.date).getTime() - new Date(a.date).getTime()
+        : a.company.localeCompare(b.company)
+    );
+
+  if (!currentUser) return null;
 
   return (
     <div>

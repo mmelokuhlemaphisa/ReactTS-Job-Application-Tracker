@@ -1,25 +1,107 @@
 {
-  "user": [
+  "users": [
     {
-      "id": "f086",
-      "username": "melokuhle",
+      "id": "36ed",
+      "username": "melokuhl",
+      "password": "1234"
+    },
+    {
+      "id": "6923",
+      "username": "sandile",
       "password": "12345"
     },
     {
-      "id": "1934",
-      "username": "sne",
-      "password": "123"
+      "id": "66d0",
+      "username": "menzi",
+      "password": "12345"
+    },
+    {
+      "id": "20fc",
+      "username": "samkelo",
+      "password": "sam"
     }
   ],
   "jobs": [
     {
-      "id": "cd5f",
-      "company": "2q3e2",
-      "role": "42423",
+      "id": "28ab",
+      "company": "sas",
+      "role": "xdsa",
+      "status": "Interviewed",
+      "date": "2025-09-16",
+      "details": "sscx",
+      "userId": "8352"
+    },
+    {
+      "id": "5f1a",
+      "company": "amazone",
+      "role": "esds",
+      "status": "Interviewed",
+      "date": "2025-09-01",
+      "details": "fvvrefrefer",
+      "userId": "6923"
+    },
+    {
+      "id": "4283",
+      "company": "google",
+      "role": "mananger",
+      "status": "Applied",
+      "date": "2025-08-31",
+      "details": "edewdfew",
+      "userId": "6923"
+    },
+    {
+      "id": "6c3e",
+      "company": "cddsc",
+      "role": "cfdec",
       "status": "Interviewed",
       "date": "2025-09-09",
-      "details": "4r234re2q3r4",
-      "userId": "8f8c"
+      "details": "dwqd",
+      "userId": "66d0"
+    },
+    {
+      "id": "6413",
+      "company": "mlab",
+      "role": "ewe",
+      "status": "Interviewed",
+      "date": "2025-09-02",
+      "details": "ewwerf",
+      "userId": "36ed"
+    },
+    {
+      "id": "5280",
+      "company": "fre43f",
+      "role": "34fr34e",
+      "status": "Rejected",
+      "date": "2025-08-01",
+      "details": "r34rf",
+      "userId": "66d0"
+    },
+    {
+      "id": "711f",
+      "company": "\\zsxca\\C",
+      "role": "CAQCD",
+      "status": "Interviewed",
+      "date": "2025-09-02",
+      "details": "ASWASWCDFAWSF",
+      "userId": "36ed"
+    },
+    {
+      "id": "6b3e",
+      "company": "\\C\\AC",
+      "role": "ACAC",
+      "status": "Rejected",
+      "date": "2025-09-04",
+      "details": "FCDF",
+      "userId": "36ed"
+    },
+    {
+      "id": "cd23",
+      "company": "S",
+      "role": "SWSW",
+      "status": "Interviewed",
+      "date": "2025-09-03",
+      "details": "RWFSWR",
+      "userId": "36ed"
     }
   ]
 }
