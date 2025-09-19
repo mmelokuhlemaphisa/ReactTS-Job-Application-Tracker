@@ -1,69 +1,89 @@
-# React + TypeScript + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# Project Description
 
-Currently, two official plugins are available:
+JobTracker is a React-based web application designed to help users track their job applications efficiently. Users can register, log in, and manage their job applications by adding, editing, deleting, and viewing detailed job information. Each user can see only their own jobs.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+ * Key features:
 
-## Expanding the ESLint configuration
+* User authentication (Login/Register).
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+* Add, edit, delete, and view job applications.
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+* Filter, search, and sort jobs.
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+* Responsive design with modals for adding/editing jobs.
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+* JSON Server backend for persistent data storage.
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+# Technologies Used
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+* Frontend: React, TypeScript, CSS
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+* Backend: JSON Server
+
+* Routing: React Router
+
+* State Management: React useState & useEffect
+
+* Storage: LocalStorage for current user session
+
+# Project Structure
+
+JobTracker/
+├─ public/
+├─ src/
+│  ├─ assets/         # Logo and images
+│  ├─ components/     # React components
+│  │  ├─ pages/       # Pages like Home, Login, Register, JobPage
+│  └─ App.tsx         # Main App with Routes
+├─ db.json             # JSON Server database
+├─ package.json
+└─ README.md
+
+
+# Start JSON Server
+
+* npx json-server --watch db.json --port 3000
+* This will start a backend server at http://localhost:3000
+
+
+
+# Usage
+
+* Open the app in your browser.
+
+* Register a new user or log in with an existing account.
+
+* Add new jobs by clicking Add Job.
+
+* Edit or delete jobs using the corresponding buttons.
+
+* Click Details to view full job information.
+
+* Use search, filter, and sort controls to manage your job list efficiently.
+
+# Notes
+
+* Each user can only see their own jobs.
+
+* Passwords are stored in plain text in db.json for simplicity (not recommended for production).
+
+* LocalStorage is used to store the currently logged-in user.
+
+# Future Improvements
+
+* Integrate a proper backend with authentication (JWT).
+
+* Add file attachments or resume uploads.
+
+* Implement password hashing for security.
+
+* Add notifications or email reminders for interviews.
+
+# Author
+
+**Melokuhle Maphisa**
+
+* GitHub: 
+
+* Email: melokuhlemaphisa99@gmail.com
