@@ -280,7 +280,7 @@ height: 47PX;
 
 /* Job List */
 .job-list {
-  height: 20vh;
+  height: 77vh;
   padding: 20px;
   display: grid;
   gap: 20px;
@@ -288,6 +288,7 @@ height: 47PX;
 }
 
 .job-card {
+    height: 20vh;
   background: #fff;
   padding: 16px;
   border-radius: 12px;
@@ -503,3 +504,20 @@ Status styles
   text-align: center;
   padding: 1rem;
 }
+
+.welcome-message {
+  text-align: center;
+  margin: 20px 0;
+  color: #111827;
+}
+
+.welcome-message h2 {
+  font-size: 24px;
+  margin-bottom: 5px;
+}
+
+.welcome-message p {
+  font-size: 16px;
+  color: #374151;
+}
+

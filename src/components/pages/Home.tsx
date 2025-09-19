@@ -36,13 +36,11 @@ export default function Home({currentUser}:HomeProps)  {
   const navigate = useNavigate();
 
   // ✅ Get currentUser from localStorage
-  currentUser = JSON.parse(
-    localStorage.getItem("currentUser") || "null"
-  );
+  currentUser = JSON.parse(localStorage.getItem("currentUser") || "null");
 
- const filterByUserId = (jobs: Job[], userId: string): Job[] => {
-   return jobs.filter((job) => job.userId === userId);
- };
+  const filterByUserId = (jobs: Job[], userId: string): Job[] => {
+    return jobs.filter((job) => job.userId === userId);
+  };
 
   useEffect(() => {
     if (!currentUser) {
@@ -305,42 +303,50 @@ export default function Home({currentUser}:HomeProps)  {
 
         {/* Job List */}
         <div className="job-list">
-          {filteredJobs.map((job) => (
-            <div key={job.id} className="job-card">
-              <h2 className="job-company">{job.company}</h2>
-              <p className="job-role">{job.role}</p>
-              <span className={`status status-${job.status.toLowerCase()}`}>
-                {job.status}
-              </span>
-              <p className="job-date">Date: {job.date}</p>
-              <p className="job-details">{job.details}</p>
-
-              <div className="job-actions">
-                <button className="btn btn-blue">
-                  <Link to={`/jobpage/${job.id}`}>Details</Link>
-                </button>
-
-                <button
-                  className="btn btn-blue"
-                  onClick={() => handleEdit(job)}
-                >
-                  Edit
-                </button>
-                <button
-                  className="btn btn-red"
-                  onClick={() => handleDelete(job.id)}
-                >
-                  Delete
-                </button>
-              </div>
+          {filteredJobs.length === 0 ? (
+            <div className="welcome-message">
+              <h2>Welcome, {currentUser?.username}!</h2>
+              <p>
+                Start by adding a new job using the <strong>Add Job</strong>{" "}
+                button above.
+              </p>
             </div>
-          ))}
+          ) : (
+            filteredJobs.map((job) => (
+              <div key={job.id} className="job-card">
+                <h2 className="job-company">{job.company}</h2>
+                <p className="job-role">{job.role}</p>
+                <span className={`status status-${job.status.toLowerCase()}`}>
+                  {job.status}
+                </span>
+                <p className="job-date">Date: {job.date}</p>
+                <p className="job-details">{job.details}</p>
+                <div className="job-actions">
+                  <button className="btn btn-blue">
+                    <Link to={`/jobpage/${job.id}`}>Details</Link>
+                  </button>
+                  <button
+                    className="btn btn-blue"
+                    onClick={() => handleEdit(job)}
+                  >
+                    Edit
+                  </button>
+                  <button
+                    className="btn btn-red"
+                    onClick={() => handleDelete(job.id)}
+                  >
+                    Delete
+                  </button>
+                </div>
+              </div>
+            ))
+          )}
         </div>
-      </div>
 
-      <footer className="footer">
-        <p>© {new Date().getFullYear()} JobTracker | All rights reserved.</p>
-      </footer>
+        <footer className="footer">
+          <p>© {new Date().getFullYear()} JobTracker | All rights reserved.</p>
+        </footer>
+      </div>
     </div>
   );
 }

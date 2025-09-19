@@ -19,6 +19,11 @@
       "id": "20fc",
       "username": "samkelo",
       "password": "sam"
+    },
+    {
+      "id": "b6b9",
+      "username": "zakes",
+      "password": "zeze"
     }
   ],
   "jobs": [
@@ -111,6 +116,15 @@
       "date": "2025-09-01",
       "details": "tgyg",
       "userId": "20fc"
+    },
+    {
+      "id": "8a62",
+      "company": "melokuhl",
+      "role": "gtrgtr",
+      "status": "Rejected",
+      "date": "2025-08-31",
+      "details": "trtr",
+      "userId": "b6b9"
     }
   ]
 }
