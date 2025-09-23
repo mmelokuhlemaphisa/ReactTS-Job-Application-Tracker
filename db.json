@@ -19,6 +19,21 @@
       "id": "20fc",
       "username": "samkelo",
       "password": "sam"
+    },
+    {
+      "id": "b6b9",
+      "username": "zakes",
+      "password": "zeze"
+    },
+    {
+      "id": "072f",
+      "username": "asanda",
+      "password": "zulu"
+    },
+    {
+      "id": "de2f",
+      "username": "maphisa",
+      "password": "2468"
     }
   ],
   "jobs": [
@@ -68,12 +83,12 @@
       "userId": "36ed"
     },
     {
-      "id": "5280",
       "company": "fre43f",
       "role": "34fr34e",
-      "status": "Rejected",
+      "status": "Interviewed",
       "date": "2025-08-01",
       "details": "r34rf",
+      "id": "5280",
       "userId": "66d0"
     },
     {
@@ -111,6 +126,33 @@
       "date": "2025-09-01",
       "details": "tgyg",
       "userId": "20fc"
+    },
+    {
+      "company": "melokuhl",
+      "role": "gtrgtr",
+      "status": "Interviewed",
+      "date": "2025-08-31",
+      "details": "trtr",
+      "id": "8a62",
+      "userId": "b6b9"
+    },
+    {
+      "id": "3a17",
+      "company": "zakes business",
+      "role": "manager",
+      "status": "Applied",
+      "date": "2025-09-02",
+      "details": "wewrwerewr",
+      "userId": "b6b9"
+    },
+    {
+      "id": "6a85",
+      "company": "ttgtgg",
+      "role": "regtft",
+      "status": "Interviewed",
+      "date": "2025-09-01",
+      "details": "regtrgrgt",
+      "userId": "de2f"
     }
   ]
 }
