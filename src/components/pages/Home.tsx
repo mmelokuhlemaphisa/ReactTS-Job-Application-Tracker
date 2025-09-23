@@ -304,12 +304,14 @@ export default function Home({currentUser}:HomeProps)  {
         {/* Job List */}
         <div className="job-list">
           {filteredJobs.length === 0 ? (
-            <div className="welcome-message">
-              <h2>Welcome, {currentUser?.username}!</h2>
-              <p>
-                Start by adding a new job using the <strong>Add Job</strong>{" "}
-                button above.
-              </p>
+            <div className="welcome-message-container">
+              <div className="welcome-message">
+                <h2>Welcome, {currentUser?.username}!</h2>
+                <p>
+                  Start by adding a new job using the <strong>Add Job</strong>{" "}
+                  button above.
+                </p>
+              </div>
             </div>
           ) : (
             filteredJobs.map((job) => (
@@ -323,7 +325,9 @@ export default function Home({currentUser}:HomeProps)  {
                 <p className="job-details">{job.details}</p>
                 <div className="job-actions">
                   <button className="btn btn-blue">
-                    <Link to={`/jobpage/${job.id}`}>Details</Link>
+                    <Link className="details" to={`/jobpage/${job.id}`}>
+                      Details
+                    </Link>
                   </button>
                   <button
                     className="btn btn-blue"
