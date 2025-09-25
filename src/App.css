@@ -180,7 +180,7 @@ height: 100vh
   box-shadow: 0 0 4px #3D61BB55;
 }
 
-.button {
+.button  {
   width: 100%;
   padding: 12px;
   background: #3D61BB;
@@ -191,6 +191,19 @@ height: 100vh
   font-weight: bold;
   cursor: pointer;
   transition: background 0.3s;
+}
+
+.home-btn{
+  width: 50%;
+  color: black;
+
+
+}
+.go-home{
+  width: 40%;
+ height: 4vh;
+ background-color: #27478f;
+ align-items: flex-start;
 }
 
 .button:hover {
