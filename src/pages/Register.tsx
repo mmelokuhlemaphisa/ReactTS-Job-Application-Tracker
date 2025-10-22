@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
+import { Button, Input } from "../components/ui";
 
 interface User {
   id?: number; // ✅ needed for jobs relation
@@ -75,7 +76,7 @@ export default function Register() {
             <h1>Register</h1>
             <br /> <br />
             <label htmlFor="username">Username:</label>
-            <input
+            <Input
               type="text"
               placeholder="Enter username"
               value={username}
@@ -83,16 +84,16 @@ export default function Register() {
             />
             <br /> <br />
             <label htmlFor="password">Password:</label>
-            <input
+            <Input
               type="password"
               placeholder="Enter password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
             <br /> <br />
-            <button className="button" type="submit">
+            <Button className="button" type="submit">
               Sign up
-            </button>
+            </Button>
             <br />
             <br />
             <p>

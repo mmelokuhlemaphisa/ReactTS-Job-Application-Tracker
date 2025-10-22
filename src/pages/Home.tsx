@@ -1,5 +1,14 @@
 import React, { useState, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import {
+  Button,
+  Input,
+  Select,
+  TextArea,
+  JobCard,
+  Modal,
+  Navbar,
+} from "../components/ui";
 
 interface Job {
   id: string;
@@ -14,14 +23,13 @@ interface Job {
 interface User {
   id: string;
   username: string;
-
 }
 
 interface HomeProps {
   currentUser: User | null;
 }
 
-export default function Home({currentUser}:HomeProps)  {
+export default function Home({ currentUser }: HomeProps) {
   const [jobs, setJobs] = useState<Job[]>([]);
   const [showModal, setShowModal] = useState(false);
   const [editJobId, setEditJobId] = useState<string | null>(null);
@@ -37,10 +45,6 @@ export default function Home({currentUser}:HomeProps)  {
 
   // ✅ Get currentUser from localStorage
   currentUser = JSON.parse(localStorage.getItem("currentUser") || "null");
-
-  const filterByUserId = (jobs: Job[], userId: string): Job[] => {
-    return jobs.filter((job) => job.userId === userId);
-  };
 
   useEffect(() => {
     if (!currentUser) {
@@ -176,130 +180,119 @@ export default function Home({currentUser}:HomeProps)  {
   return (
     <div>
       <div className="homepage">
-        <nav className="navbar">
-          <div className="head">
-            <img className="log" src="/src/assets/Logo-preview.jpg" alt="" />
-            <h1>JobTracker</h1>
-          </div>
-
-          <div className="nav-buttons">
-            <button
-              className="btn btn-green"
-              onClick={() => {
-                setShowModal(true);
-                setEditJobId(null);
-                setNewJob({
-                  company: "",
-                  role: "",
-                  status: "Applied",
-                  date: "",
-                  details: "",
-                });
-              }}
-            >
-              Add Job
-            </button>
-            <Link to="/" className="link-logout">
-              <button className="btn btn-red">Logout</button>
-            </Link>
-          </div>
-        </nav>
+        <Navbar
+          variant="main"
+          showAddButton={true}
+          onAddJob={() => {
+            setShowModal(true);
+            setEditJobId(null);
+            setNewJob({
+              company: "",
+              role: "",
+              status: "Applied",
+              date: "",
+              details: "",
+            });
+          }}
+        />
 
         {/* Search / Filter / Sort Controls */}
         <div className="controls">
-          <input
+          <Input
+            variant="control"
             type="text"
-            className="control-input"
             placeholder="🔍 Search by company or role"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
           />
 
-          <select
-            className="control-select"
+          <Select
+            variant="control"
             value={filterStatus}
             onChange={(e) => setFilterStatus(e.target.value)}
-          >
-            <option value="All">All</option>
-            <option value="Applied">Applied</option>
-            <option value="Interviewed">Interviewed</option>
-            <option value="Rejected">Rejected</option>
-          </select>
+            options={[
+              { value: "All", label: "All" },
+              { value: "Applied", label: "Applied" },
+              { value: "Interviewed", label: "Interviewed" },
+              { value: "Rejected", label: "Rejected" },
+            ]}
+          />
 
-          <select
-            className="control-select"
+          <Select
+            variant="control"
             value={sortBy}
             onChange={(e) => setSortBy(e.target.value)}
-          >
-            <option value="date">Sort by Date</option>
-            <option value="company">Sort by Company</option>
-          </select>
+            options={[
+              { value: "date", label: "Sort by Date" },
+              { value: "company", label: "Sort by Company" },
+            ]}
+          />
         </div>
 
         {/* Modal */}
-        {showModal && (
-          <div className="modal-overlay">
-            <div className="modal">
-              <h2>{editJobId !== null ? "Edit Job" : "Add New Job"}</h2>
-              <form onSubmit={handleSubmit}>
-                <input
-                  type="text"
-                  name="company"
-                  value={newJob.company}
-                  onChange={handleChange}
-                  placeholder="Company Name"
-                  required
-                />
-                <input
-                  type="text"
-                  name="role"
-                  value={newJob.role}
-                  onChange={handleChange}
-                  placeholder="Role"
-                  required
-                />
-                <select
-                  className="filters"
-                  name="status"
-                  value={newJob.status}
-                  onChange={handleChange}
-                >
-                  <option value="Applied">Applied</option>
-                  <option value="Interviewed">Interviewed</option>
-                  <option value="Rejected">Rejected</option>
-                </select>
+        <Modal
+          isOpen={showModal}
+          onClose={() => setShowModal(false)}
+          title={editJobId !== null ? "Edit Job" : "Add New Job"}
+        >
+          <form onSubmit={handleSubmit}>
+            <Input
+              type="text"
+              name="company"
+              value={newJob.company}
+              onChange={handleChange}
+              placeholder="Company Name"
+              required
+            />
+            <Input
+              type="text"
+              name="role"
+              value={newJob.role}
+              onChange={handleChange}
+              placeholder="Role"
+              required
+            />
+            <Select
+              name="status"
+              value={newJob.status}
+              onChange={handleChange}
+              variant="modal"
+              options={[
+                { value: "Applied", label: "Applied" },
+                { value: "Interviewed", label: "Interviewed" },
+                { value: "Rejected", label: "Rejected" },
+              ]}
+            />
 
-                <input
-                  type="date"
-                  name="date"
-                  value={newJob.date}
-                  onChange={handleChange}
-                  required
-                />
-                <textarea
-                  name="details"
-                  value={newJob.details}
-                  onChange={handleChange}
-                  placeholder="Extra details"
-                  rows={4}
-                />
+            <Input
+              type="date"
+              name="date"
+              value={newJob.date}
+              onChange={handleChange}
+              required
+            />
+            <TextArea
+              name="details"
+              value={newJob.details}
+              onChange={handleChange}
+              placeholder="Extra details"
+              rows={4}
+            />
 
-                <div className="modal-buttons">
-                  <button type="submit" className="btn btn-green">
-                    {editJobId !== null ? "Update Job" : "Save Job"}
-                  </button>
-                  <button
-                    type="button"
-                    className="btn btn-red"
-                    onClick={() => setShowModal(false)}
-                  >
-                    Cancel
-                  </button>
-                </div>
-              </form>
+            <div className="modal-buttons">
+              <Button type="submit" variant="green">
+                {editJobId !== null ? "Update Job" : "Save Job"}
+              </Button>
+              <Button
+                type="button"
+                variant="red"
+                onClick={() => setShowModal(false)}
+              >
+                Cancel
+              </Button>
             </div>
-          </div>
-        )}
+          </form>
+        </Modal>
 
         {/* Job List */}
         <div className="job-list">
@@ -315,34 +308,12 @@ export default function Home({currentUser}:HomeProps)  {
             </div>
           ) : (
             filteredJobs.map((job) => (
-              <div key={job.id} className="job-card">
-                <h2 className="job-company">{job.company}</h2>
-                <p className="job-role">{job.role}</p>
-                <span className={`status status-${job.status.toLowerCase()}`}>
-                  {job.status}
-                </span>
-                <p className="job-date">Date: {job.date}</p>
-                <p className="job-details">{job.details}</p>
-                <div className="job-actions">
-                  <button className="btn btn-blue">
-                    <Link className="details" to={`/jobpage/${job.id}`}>
-                      Details
-                    </Link>
-                  </button>
-                  <button
-                    className="btn btn-blue"
-                    onClick={() => handleEdit(job)}
-                  >
-                    Edit
-                  </button>
-                  <button
-                    className="btn btn-red"
-                    onClick={() => handleDelete(job.id)}
-                  >
-                    Delete
-                  </button>
-                </div>
-              </div>
+              <JobCard
+                key={job.id}
+                job={job}
+                onEdit={handleEdit}
+                onDelete={handleDelete}
+              />
             ))
           )}
         </div>

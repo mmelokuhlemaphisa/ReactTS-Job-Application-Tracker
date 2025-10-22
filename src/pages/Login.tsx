@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { Button, Input } from "../components/ui";
 
 export default function Login() {
   const [username, setUsername] = useState("");
@@ -48,7 +49,7 @@ export default function Login() {
             Username:
           </label>
           <br />
-          <input
+          <Input
             type="text"
             placeholder="Enter username"
             value={username}
@@ -58,17 +59,17 @@ export default function Login() {
           <br />
           <label htmlFor="password">Password:</label>
           <br />
-          <input
-            type="password" // ✅ change from "text" to "password"
+          <Input
+            type="password"
             placeholder="Enter password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
           <br />
           <br />
-          <button className="button" type="submit">
+          <Button className="button" type="submit">
             Login
-          </button>
+          </Button>
           <br /> <br />
           <p>
             Don't have an account?

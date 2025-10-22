@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
+import { Navbar, Button } from "../components/ui";
 
 interface Job {
   id: string;
@@ -64,17 +65,12 @@ export default function JobPage() {
 
   return (
     <div className="jobpage">
-      <nav className="navbar">
-        <div className="head">
-          <img className="log" src="/src/assets/Logo-preview.jpg" alt="logo" />
-          <h1>JobTracker</h1>
-        </div>
-      </nav>
+      <Navbar variant="main" />
 
       <div className="job-details-container">
-        <button onClick={() => navigate(-1)} className="btn btn-red back-btn">
+        <Button onClick={() => navigate(-1)} variant="red" className="back-btn">
           ← Back
-        </button>
+        </Button>
 
         <div className="job-details-card">
           <h1 className="job-title">{job.company}</h1>

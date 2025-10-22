@@ -10,13 +10,11 @@ main {
   height: 100%;
 }
 #root {
-font-family: Arial, Helvetica, sans-serif;
- 
+  font-family: Arial, Helvetica, sans-serif;
 }
-.blueline{
+.blueline {
   width: 100%;
   height: 2vh;
- 
 }
 
 .hearder {
@@ -96,7 +94,7 @@ font-family: Arial, Helvetica, sans-serif;
 
 .but {
   padding: 14px 28px;
-  background-color: #3D61BB;
+  background-color: #3d61bb;
   color: white;
   border: none;
   border-radius: 10px;
@@ -115,12 +113,12 @@ font-family: Arial, Helvetica, sans-serif;
   color: white;
 }
 
-.Pic404{
-display: flex;
-flex-direction: column;
-align-items: center;
-width: 100%;
-height: 100vh
+.Pic404 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
 }
 
 .login-section {
@@ -128,7 +126,7 @@ height: 100vh
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background: linear-gradient(to right, #3D61BB, #1E3A8A);
+  background: linear-gradient(to right, #3d61bb, #1e3a8a);
   padding: 20px;
 }
 
@@ -137,7 +135,7 @@ height: 100vh
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background: linear-gradient(to right, #3D61BB, #1E3A8A);
+  background: linear-gradient(to right, #3d61bb, #1e3a8a);
   padding: 20px;
 }
 
@@ -176,14 +174,14 @@ height: 100vh
 
 .form input:focus {
   outline: none;
-  border-color: #3D61BB;
-  box-shadow: 0 0 4px #3D61BB55;
+  border-color: #3d61bb;
+  box-shadow: 0 0 4px #3d61bb55;
 }
 
-.button  {
+.button {
   width: 100%;
   padding: 12px;
-  background: #3D61BB;
+  background: #3d61bb;
   color: white;
   border: none;
   border-radius: 8px;
@@ -193,17 +191,15 @@ height: 100vh
   transition: background 0.3s;
 }
 
-.home-btn{
+.home-btn {
   width: 50%;
   color: black;
-
-
 }
-.go-home{
+.go-home {
   width: 40%;
- height: 4vh;
- background-color: #27478f;
- align-items: flex-start;
+  height: 4vh;
+  background-color: #27478f;
+  align-items: flex-start;
 }
 
 .button:hover {
@@ -212,7 +208,7 @@ height: 100vh
 
 .link-login {
   margin-left: 6px;
-  color: #3D61BB;
+  color: #3d61bb;
   font-weight: bold;
   text-decoration: none;
 }
@@ -223,7 +219,7 @@ height: 100vh
 
 .link-logout {
   margin-left: 6px;
-  color: #3D61BB;
+  color: #3d61bb;
   font-weight: bold;
   text-decoration: none;
 }
@@ -232,10 +228,7 @@ height: 100vh
   text-decoration: underline;
 }
 
-
-
-
-.text-section{
+.text-section {
   width: 50%;
   text-align: center;
   margin-top: 19%;
@@ -244,41 +237,40 @@ height: 100vh
   gap: 2%;
 }
 
-.login-btn{
-width: 80%;
-padding: 20px;
-color: black;
+.login-btn {
+  width: 80%;
+  padding: 20px;
+  color: black;
 }
 
-.loginBtn{
-
+.loginBtn {
   color: aliceblue;
   background-color: lightgrey;
-height: 47PX;
- border: none;
- outline: none;
- border-radius: 10PX;
- 
+  height: 47px;
+  border: none;
+  outline: none;
+  border-radius: 10px;
 }
 
-.link-login{
+.link-login {
   color: black;
- }
+}
 
- .link-logout{
+.link-logout {
   text-decoration: none;
+}
 
- }
-
- .details{
+.details {
   text-decoration: none;
   color: white;
- }
+}
 
 .homepage {
   min-height: 100vh;
   background-color: #f3f4f6;
   font-family: Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
 }
 
 /* Navbar */
@@ -309,7 +301,6 @@ height: 47PX;
   flex-wrap: wrap; /* allow buttons to wrap on small screens */
   margin-left: auto; /* pushes buttons to the right end */
 }
-
 
 /* Buttons */
 .btn {
@@ -381,7 +372,10 @@ height: 47PX;
   display: grid;
   gap: 20px;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  height: 82vh;
+  min-height: 50vh;
+  max-height: 82vh;
+  overflow-y: auto;
+  margin-bottom: 80px; /* Space for footer */
 }
 
 .job-card {
@@ -390,7 +384,7 @@ height: 47PX;
   border-radius: 12px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
   transition: 0.3s;
- height: 50vh;
+  height: 50vh;
 }
 
 .job-card:hover {
@@ -446,9 +440,9 @@ height: 47PX;
 /* Modal */
 .modal-overlay {
   position: fixed;
-  top: 0; 
-  left: 0; 
-  right: 0; 
+  top: 0;
+  left: 0;
+  right: 0;
   bottom: 0;
   background: rgba(0, 0, 0, 0.5);
   display: flex;
@@ -463,7 +457,7 @@ height: 47PX;
   border-radius: 8px;
   width: 400px;
   max-width: 90%;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
 }
 
 .modal input,
@@ -631,10 +625,145 @@ height: 47PX;
 
 /* Footer */
 .footer {
+  margin-top: auto;
   background: #2c3e50;
   color: white;
   text-align: center;
   padding: 1rem;
+  flex-shrink: 0;
+}
+
+/* ===== MOBILE RESPONSIVE STYLES ===== */
+
+/* Extra small devices (280px and below) */
+@media (max-width: 280px) {
+  .navbar {
+    padding: 0.3rem;
+    gap: 5px;
+  }
+
+  .navbar h1 {
+    font-size: 18px;
+  }
+
+  .navbar .log {
+    height: 30px;
+    width: 30px;
+  }
+
+  .btn {
+    font-size: 11px;
+    padding: 5px 10px;
+    min-height: 40px;
+  }
+
+  .controls {
+    padding: 8px;
+    gap: 8px;
+  }
+
+  .control-input,
+  .control-select {
+    font-size: 11px;
+    padding: 5px 8px;
+  }
+
+  .job-card {
+    padding: 10px;
+    font-size: 12px;
+    margin-bottom: 8px;
+  }
+
+  .job-list {
+    padding: 8px;
+    gap: 8px;
+    height: auto;
+    max-height: none;
+    margin-bottom: 60px;
+    grid-template-columns: 1fr;
+  }
+
+  .job-company {
+    font-size: 14px;
+  }
+
+  .job-role {
+    font-size: 12px;
+  }
+
+  .modal {
+    width: 98%;
+    padding: 10px;
+  }
+
+  .modal h2 {
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+
+  .card {
+    width: 98%;
+    padding: 12px;
+  }
+
+  .card h1 {
+    font-size: 20px;
+  }
+
+  .form input {
+    font-size: 12px;
+    padding: 8px;
+  }
+}
+
+/* Base mobile-first styles */
+.homepage {
+  min-height: 100vh;
+}
+
+.job-list {
+  min-height: 50vh;
+}
+
+/* Ensure touch targets are large enough */
+.btn {
+  min-height: 44px;
+  min-width: 44px;
+}
+
+/* Improve tap targets for mobile */
+.control-input,
+.control-select {
+  min-height: 44px;
+  touch-action: manipulation;
+}
+
+/* Mobile-specific improvements */
+@media (hover: none) and (pointer: coarse) {
+  /* Styles for touch devices */
+  .btn:hover {
+    transform: none;
+  }
+
+  .job-card:hover {
+    transform: none;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  }
+
+  /* Increase spacing for touch targets */
+  .job-actions {
+    gap: 12px;
+  }
+
+  .modal-buttons {
+    gap: 12px;
+  }
+
+  /* Remove hover effects that don't work on touch */
+  .control-input:hover,
+  .control-select:hover {
+    border-color: #ccc;
+  }
 }
 
 /* Smartphones (portrait) — 320px and below */
@@ -643,36 +772,76 @@ height: 47PX;
     flex-direction: column;
     gap: 10px;
     text-align: center;
+    padding: 0.5rem;
   }
 
   .nav-buttons {
     flex-wrap: wrap;
     justify-content: center;
     gap: 8px;
+    width: 100%;
   }
-.Section{
 
-
-}
   .controls {
     flex-direction: column;
     width: 100%;
     gap: 10px;
+    padding: 10px;
   }
 
   .control-input,
   .control-select {
     width: 100%;
+    font-size: 12px;
+    padding: 6px 8px;
   }
 
   .job-card {
     width: 100%;
     height: auto;
+    padding: 12px;
+    margin: 5px 0;
+  }
+
+  .job-list {
+    padding: 10px;
+    gap: 10px;
+    height: auto;
+    max-height: none;
+    margin-bottom: 70px;
+    grid-template-columns: 1fr;
   }
 
   .card {
-    width: 90%;
+    width: 95%;
     height: auto;
+    padding: 15px;
+    margin: 10px auto;
+  }
+
+  .job-company {
+    font-size: 16px;
+  }
+
+  .job-role {
+    font-size: 14px;
+  }
+
+  .btn {
+    font-size: 12px;
+    padding: 6px 12px;
+  }
+
+  .modal {
+    width: 95%;
+    padding: 15px;
+  }
+
+  .modal input,
+  .modal select,
+  .modal textarea {
+    font-size: 14px;
+    padding: 6px;
   }
 }
 
@@ -681,6 +850,7 @@ height: 47PX;
   .hearder {
     flex-direction: column;
     text-align: center;
+    padding: 12px 16px;
   }
 
   .hearder img.logo {
@@ -691,26 +861,32 @@ height: 47PX;
   .Section {
     flex-direction: column;
     text-align: center;
+    gap: 20px;
+    margin-bottom: 40px;
   }
 
   .herotext h1,
   .text h2 {
     font-size: 20px;
+    margin-bottom: 12px;
   }
 
   .herotext p,
   .text p {
     font-size: 14px;
+    line-height: 1.5;
   }
 
   .but {
     width: 100%;
     max-width: 250px;
+    margin: 0 auto;
   }
 
   .card {
-    padding: 25px 20px;
+    padding: 20px 15px;
     max-width: 100%;
+    margin: 0 auto;
   }
 
   .card h1 {
@@ -720,46 +896,82 @@ height: 47PX;
   .form input {
     padding: 10px;
     font-size: 14px;
+    margin-bottom: 15px;
   }
 
   .button {
     font-size: 15px;
     padding: 10px;
+    width: 100%;
   }
+
   .navbar {
     padding: 1rem;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+  }
+
+  .navbar .head {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .controls {
+    flex-direction: column;
+    gap: 12px;
+    padding: 15px;
   }
 
   .controls input,
   .controls select {
     width: 100%;
+    padding: 10px;
+    font-size: 14px;
   }
 
   .job-list {
     padding: 10px;
-    gap: 10px;
+    gap: 12px;
     grid-template-columns: 1fr;
+    height: auto;
+    max-height: none;
+    margin-bottom: 80px;
   }
 
-  .modal {
-    width: 95%;
+  .job-card {
+    height: auto;
+    padding: 15px;
+  }
+
+  .job-actions {
+    flex-direction: column;
+    gap: 8px;
   }
 
   .job-actions button {
     width: 100%;
+    margin: 2px 0;
   }
-  .filters {
+
+  .modal {
+    width: 95%;
+    max-width: 350px;
+  }
+
+  .modal-buttons {
     flex-direction: column;
     gap: 10px;
   }
- .navbar {
-    padding: 1rem;
-    flex-direction: column;
-    align-items: flex-start;
+
+  .modal-buttons .btn {
+    width: 100%;
+    margin: 0;
   }
 
   .job-details-card {
     padding: 1rem;
+    margin: 10px;
   }
 
   .job-title {
@@ -772,12 +984,77 @@ height: 47PX;
 
   .back-btn {
     width: 100%;
+    margin-bottom: 15px;
+  }
+
+  .job-meta {
+    flex-direction: column;
+    gap: 8px;
+    align-items: flex-start;
   }
 
   .job-meta span {
-    font-size: 0.8rem;
+    font-size: 0.85rem;
   }
- 
+
+  .footer {
+    font-size: 12px;
+    padding: 15px;
+    text-align: center;
+  }
+
+  /* Welcome message for small screens */
+  .welcome-message-container {
+    padding: 20px;
+    margin-bottom: 80px; /* Space for footer */
+  }
+
+  .welcome-message h2 {
+    font-size: 24px;
+  }
+
+  .welcome-message p {
+    font-size: 14px;
+    line-height: 1.6;
+  }
+}
+
+/* Mobile landscape orientation */
+@media screen and (max-height: 500px) and (orientation: landscape) {
+  .navbar {
+    padding: 0.5rem 1rem;
+  }
+
+  .controls {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .control-input,
+  .control-select {
+    flex: 1;
+    min-width: 120px;
+  }
+
+  .modal {
+    max-height: 90vh;
+    overflow-y: auto;
+  }
+
+  .job-list {
+    height: auto;
+    max-height: 60vh;
+    overflow-y: auto;
+  }
+}
+
+/* High DPI / Retina displays */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .navbar .log {
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+  }
 }
 
 /* Tablets — up to 768px */
@@ -801,8 +1078,8 @@ height: 47PX;
   .heropic {
     max-height: 250px;
   }
- 
-   .card {
+
+  .card {
     max-width: 90%;
   }
 
@@ -810,7 +1087,7 @@ height: 47PX;
     font-size: 24px;
   }
 
-   .navbar {
+  .navbar {
     flex-direction: column;
     align-items: flex-start;
     padding: 1rem;
@@ -828,7 +1105,7 @@ height: 47PX;
     padding: 12px;
   }
 
-   .job-details-container {
+  .job-details-container {
     padding: 1.5rem;
   }
 
@@ -836,7 +1113,6 @@ height: 47PX;
     flex-direction: column;
     align-items: flex-start;
   }
-
 }
 
 /* Small desktops — up to 1024px */
@@ -865,7 +1141,7 @@ height: 47PX;
     margin-top: 10px;
   }
 
-    .job-details-card {
+  .job-details-card {
     padding: 1.5rem;
   }
 
@@ -877,8 +1153,6 @@ height: 47PX;
     font-size: 1.2rem;
   }
 }
-
-
 
 /* Large desktops — max 1200px */
 @media (max-width: 1200px) {
@@ -895,17 +1169,13 @@ height: 47PX;
     width: 60%;
   }
 
-
   .card {
     max-width: 400px;
   }
-
-
 }
 
 /* Large desktops — up to 1200px */
 @media (max-width: 1200px) {
- 
   .job-list {
     grid-template-columns: repeat(3, 1fr);
   }

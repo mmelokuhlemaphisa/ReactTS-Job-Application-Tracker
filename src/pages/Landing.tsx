@@ -1,15 +1,12 @@
-import React from 'react'
-import { Link } from 'react-router';
+import { Link } from "react-router";
+import { Navbar } from "../components/ui";
 
 export default function Landing() {
   return (
     <div>
       <div>
         {/* Header */}
-        <div className="hearder">
-          <img className="logo" src="/src/assets/Logo-preview.jpg" alt="Logo" />
-          <h1>JobTracker</h1>
-        </div>
+        <Navbar variant="landing" />
 
         <div className="mySection">
           {/* Hero Section */}
