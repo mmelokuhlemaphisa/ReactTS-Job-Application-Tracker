@@ -16,7 +16,7 @@ export default function Login() {
     }
 
     try {
-      // ✅ Make sure your db.json has "users" not "user"
+      //  Make sure your db.json has "users" not "user"
       const response = await fetch(
         `http://localhost:3000/users?username=${username}&password=${password}`
       );
@@ -25,7 +25,7 @@ export default function Login() {
       if (data.length > 0) {
         const user = data[0];
 
-        // ✅ Save only this user object
+        // Save only this user object
         localStorage.setItem("currentUser", JSON.stringify(user));
 
         alert(`Welcome ${user.username}!`);

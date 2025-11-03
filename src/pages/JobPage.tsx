@@ -36,7 +36,9 @@ export default function JobPage() {
 
     const fetchJob = async () => {
       try {
-        const response = await fetch(`http://localhost:3000/jobs/${id}`);
+        const response = await fetch(
+          `https://job-tracker-api-jze2.onrender.com/jobs/${id}`
+        );
         if (!response.ok) throw new Error("Job not found");
         const data: Job = await response.json();
 

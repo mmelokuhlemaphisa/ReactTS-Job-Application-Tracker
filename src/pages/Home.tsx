@@ -56,7 +56,7 @@ export default function Home({ currentUser }: HomeProps) {
     const fetchJobs = async () => {
       try {
         const res = await fetch(
-          `http://localhost:3000/jobs?userId=${currentUser.id}`
+          `https://job-tracker-api-jze2.onrender.com/jobs?userId=${currentUser.id}`
         );
         const data: Job[] = await res.json();
         setJobs(data);
@@ -90,7 +90,7 @@ export default function Home({ currentUser }: HomeProps) {
     try {
       if (editJobId !== null) {
         // Update existing job
-        await fetch(`http://localhost:3000/jobs/${editJobId}`, {
+        await fetch(`https://job-tracker-api-jze2.onrender.com/jobs/${editJobId}`, {
           method: "PUT",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
@@ -111,7 +111,7 @@ export default function Home({ currentUser }: HomeProps) {
         setEditJobId(null);
       } else {
         // Create new job
-        const res = await fetch("http://localhost:3000/jobs", {
+        const res = await fetch("https://job-tracker-api-jze2.onrender.com/jobs", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ ...newJob, userId: currentUser.id }),
@@ -151,7 +151,7 @@ export default function Home({ currentUser }: HomeProps) {
     if (!currentUser) return;
 
     if (window.confirm("Are you sure you want to delete this job?")) {
-      await fetch(`http://localhost:3000/jobs/${id}`, { method: "DELETE" });
+      await fetch(`https://job-tracker-api-jze2.onrender.com/jobs/${id}`, { method: "DELETE" });
       setJobs(jobs.filter((job) => job.id !== id));
     }
   };

@@ -34,6 +34,11 @@
       "id": "de2f",
       "username": "maphisa",
       "password": "2468"
+    },
+    {
+      "id": "007f",
+      "username": "melokuhl",
+      "password": "1234"
     }
   ],
   "jobs": [
@@ -134,15 +139,6 @@
       "status": "Interviewed",
       "date": "2025-10-04",
       "details": "yey",
-      "userId": "36ed"
-    },
-    {
-      "company": "yyey",
-      "role": "yy",
-      "status": "Applied",
-      "date": "2025-10-06",
-      "details": "ttt",
-      "id": "7bd0",
       "userId": "36ed"
     },
     {
