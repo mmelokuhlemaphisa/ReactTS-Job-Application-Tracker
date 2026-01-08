@@ -29,13 +29,20 @@ JobTracker is a React-based web application designed to help users track their j
 
 * Storage: LocalStorage for current user session
 
+# Installation (Frontend)
+
+1. Clone the repository
+2. Navigate to the project folder
+3. Run `npm install`
+4. Run `npm run dev`
+5. Open http://localhost:5174 in your browser
 
 
 
-# Start JSON Server
+# JSON Server hosted links
 
-* npx json-server --watch db.json --port 3000
-* This will start a backend server at http://localhost:3000
+* https://job-tracker-api-jze2.onrender.com/users
+* https://job-tracker-api-jze2.onrender.com/jobs
 
 
 
@@ -75,6 +82,6 @@ JobTracker is a React-based web application designed to help users track their j
 
 **Melokuhle Maphisa**
 
-* GitHub: 
+* GitHub: https://github.com/mmelokuhlemaphisa
 
 * Email: melokuhlemaphisa99@gmail.com
