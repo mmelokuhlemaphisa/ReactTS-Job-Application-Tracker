@@ -18,7 +18,7 @@ export default function Login() {
     try {
       //  Make sure your db.json has "users" not "user"
       const response = await fetch(
-        `http://localhost:3000/users?username=${username}&password=${password}`
+        `https://job-tracker-api-jze2.onrender.com/jobs/users?username=${username}&password=${password}`
       );
       const data = await response.json();
 
