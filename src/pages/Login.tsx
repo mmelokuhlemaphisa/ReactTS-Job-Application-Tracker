@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { Button, Input } from "../components/ui";
 
 export default function Login() {
   const [username, setUsername] = useState("");
@@ -15,7 +16,7 @@ export default function Login() {
     }
 
     try {
-      // ✅ Make sure your db.json has "users" not "user"
+      //  Make sure your db.json has "users" not "user"
       const response = await fetch(
         `http://localhost:3000/users?username=${username}&password=${password}`
       );
@@ -24,7 +25,7 @@ export default function Login() {
       if (data.length > 0) {
         const user = data[0];
 
-        // ✅ Save only this user object
+        // Save only this user object
         localStorage.setItem("currentUser", JSON.stringify(user));
 
         alert(`Welcome ${user.username}!`);
@@ -48,7 +49,7 @@ export default function Login() {
             Username:
           </label>
           <br />
-          <input
+          <Input
             type="text"
             placeholder="Enter username"
             value={username}
@@ -58,19 +59,17 @@ export default function Login() {
           <br />
           <label htmlFor="password">Password:</label>
           <br />
-          <input
-            type="password" // ✅ change from "text" to "password"
+          <Input
+            type="password"
             placeholder="Enter password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
           <br />
           <br />
-          <button className="button" type="submit">
-            <Link className="link-login" to="/home">
-              Register
-            </Link>
-          </button>
+          <Button className="button" type="submit">
+            Login
+          </Button>
           <br /> <br />
           <p>
             Don't have an account?

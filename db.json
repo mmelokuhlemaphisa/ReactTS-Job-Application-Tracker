@@ -34,6 +34,11 @@
       "id": "de2f",
       "username": "maphisa",
       "password": "2468"
+    },
+    {
+      "id": "007f",
+      "username": "melokuhl",
+      "password": "1234"
     }
   ],
   "jobs": [
@@ -65,15 +70,6 @@
       "userId": "66d0"
     },
     {
-      "id": "6413",
-      "company": "mlab",
-      "role": "ewe",
-      "status": "Interviewed",
-      "date": "2025-09-02",
-      "details": "ewwerf",
-      "userId": "36ed"
-    },
-    {
       "company": "fre43f",
       "role": "34fr34e",
       "status": "Interviewed",
@@ -81,33 +77,6 @@
       "details": "r34rf",
       "id": "5280",
       "userId": "66d0"
-    },
-    {
-      "company": "\\zsxca\\C",
-      "role": "CAQCD",
-      "status": "Applied",
-      "date": "2025-09-02",
-      "details": "ASWASWCDFAWSF",
-      "id": "711f",
-      "userId": "36ed"
-    },
-    {
-      "id": "6b3e",
-      "company": "\\C\\AC",
-      "role": "ACAC",
-      "status": "Rejected",
-      "date": "2025-09-04",
-      "details": "FCDF",
-      "userId": "36ed"
-    },
-    {
-      "id": "cd23",
-      "company": "S",
-      "role": "SWSW",
-      "status": "Interviewed",
-      "date": "2025-09-03",
-      "details": "RWFSWR",
-      "userId": "36ed"
     },
     {
       "id": "5be5",
@@ -144,6 +113,42 @@
       "date": "2025-09-01",
       "details": "fsdhsfdrjsjsderj ",
       "userId": "b6b9"
+    },
+    {
+      "id": "eaa5",
+      "company": "etwtew",
+      "role": "ewte",
+      "status": "Interviewed",
+      "date": "2025-10-01",
+      "details": "etetew",
+      "userId": "36ed"
+    },
+    {
+      "id": "8e5d",
+      "company": "yhy",
+      "role": "y5y",
+      "status": "Applied",
+      "date": "2025-10-07",
+      "details": "ytyt",
+      "userId": "36ed"
+    },
+    {
+      "id": "a87e",
+      "company": "y",
+      "role": "yee",
+      "status": "Interviewed",
+      "date": "2025-10-04",
+      "details": "yey",
+      "userId": "36ed"
+    },
+    {
+      "id": "4cd6",
+      "company": "tt",
+      "role": "ttr",
+      "status": "Interviewed",
+      "date": "2025-10-14",
+      "details": "ttt",
+      "userId": "36ed"
     }
   ]
 }

@@ -1,5 +1,5 @@
-import React from 'react'
-import { Link } from 'react-router';
+import { Link } from "react-router";
+import { Button } from "../components/ui";
 
 export default function Error() {
   return (
@@ -8,12 +8,11 @@ export default function Error() {
       <img src="/src/assets/The-404-Page.jpg" alt="" />
 
       <div className="home-btn">
-        <button className="go-home" type="submit">
-          <Link className="link-a" to="/
-          ">
+        <Button className="go-home" type="submit">
+          <Link className="link-a" to="/">
             Go Home
           </Link>
-        </button>
+        </Button>
       </div>
     </div>
   );
