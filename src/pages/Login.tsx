@@ -18,16 +18,13 @@ export default function Login() {
     try {
       //  Make sure your db.json has "users" not "user"
       const response = await fetch(
-        `https://job-tracker-api-jze2.onrender.com/jobs/users?username=${username}&password=${password}`
+        `https://job-tracker-api-jze2.onrender.com/users?username=${username}`
       );
       const data = await response.json();
 
-      if (data.length > 0) {
+      if (data.length > 0 && data[0].password === password) {
         const user = data[0];
-
-        // Save only this user object
         localStorage.setItem("currentUser", JSON.stringify(user));
-
         alert(`Welcome ${user.username}!`);
         navigate("/home");
       } else {
